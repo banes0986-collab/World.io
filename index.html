@@ -3,44 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purna.net | Özel</title>
+    <title>Purnahub | Özel</title>
     <style>
-        body { 
-            margin: 0; 
-            background: #000; 
-            color: #fff; 
-            font-family: sans-serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
+        body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; color: white; }
+        
+        /* Arka plan videosu ayarları */
+        #bg-video {
+            position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
+            z-index: -1; object-fit: cover; filter: brightness(40%); /* Videoyu hafif karartır */
         }
-        #login-box { text-align: center; background: #1a1a1a; padding: 30px; border-radius: 20px; }
-        #content { display: none; width: 90%; max-width: 500px; padding: 20px; background: #1a1a1a; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        img { width: 100%; border-radius: 15px; display: block; }
-        input { padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; width: 200px; }
-        button { padding: 10px 20px; background: #e50914; color: #fff; border: none; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto; }
+
+        .container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        
+        #login-box, #content { background: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid #444; }
+        #content { display: none; width: 80%; max-width: 600px; text-align: center; }
+        
+        img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
+        input { padding: 12px; border-radius: 5px; border: none; width: 200px; margin-bottom: 10px; }
+        button { padding: 12px 25px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
+    <video autoplay muted loop id="bg-video">
+        <source src="2026-01-22_dazzflimm_-_goodlinedvenomoussnake.mp4" type="video/mp4">
+    </video>
+
     <div id="login-box">
-        <h2>Purna.net Giriş</h2>
+        <h2>Purna.net</h2>
         <input type="password" id="pass" placeholder="Şifreni gir...">
         <button onclick="checkPassword()">Giriş Yap</button>
     </div>
 
     <div id="content">
-        <img src="IMG_5588.webp" alt="Özel Fotoğraf">
-        <p style="text-align:center;">Özel Proje v1.0</p>
+        <h3>Özel Galerim</h3>
+        <img src="IMG_5588.webp" alt="Fotoğraf">
+        <p>Proje v1.0 - Yerel ve Güvenli</p>
     </div>
 
     <script>
         function checkPassword() {
-            // Şifreni buradan değiştirebilirsin
             var password = document.getElementById("pass").value;
-            if (password == "1234") { 
+            if (password == "1234") { // Buradan şifreni değiştir
                 document.getElementById("login-box").style.display = "none";
                 document.getElementById("content").style.display = "block";
             } else {
