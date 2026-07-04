@@ -287,3 +287,554 @@
     </div>
     <div class="status-pill"><span class="dot"></span>Durum: <span id="server-status-text">Kontrol ediliyor...</span></div>
     <div class="status-item"><span class="label">Çevrimiçi Oyuncu</span><span class="value mono" id="
+
+                                                                          online-count">0</span></div>
+  </div>
+</div>
+
+<section id="haberler">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--blue-bright);">Duyurular</div>
+      <h2>Son Haberler</h2>
+      <p>Sunucumuzla ilgili en güncel haberler, güncellemeler ve duyurular.</p>
+    </div>
+    <div class="board reveal">
+      <div id="news-container">
+        <div class="board-empty">
+          <p>Yükleniyor veya henüz hiç haber yayınlanmadı...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ozellikler">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sistemler</div>
+      <h2>Sunucu Özellikleri</h2>
+      <p>LegacyNW dünyasında seni bekleyen benzersiz mekanikler ve sistemler.</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feature">
+        <div class="icon">💎</div>
+        <h3>BoxMining</h3>
+        <p>Özel alanlarda maden kazarak rütbeni yükselt, yeni ekipmanlar al ve geliş.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🛡️</div>
+        <h3>Gelişmiş Koruma</h3>
+        <p>trAC hile koruması sayesinde tamamen adil, hilesiz ve temiz bir oyun deneyimi.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⚖️</div>
+        <h3>Dengeli Ekonomi</h3>
+        <p>Tamamen oyuncuların kontrolünde, adil ve rekabetçi piyasa döngüsü.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🤝</div>
+        <h3>Klan Savaşları</h3>
+        <p>Ekibini topla, diğer klanlarla savaş, bölgeleri ele geçir ve gücünü göster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="magaza">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold-bright);">Market</div>
+      <h2>Üyelik Paketleri</h2>
+      <p>Destek paketlerinden dilediğini seçerek sunucunun büyümesine katkıda bulun.</p>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <div class="tag">VIP</div>
+        <h3>VIP Üyelik</h3>
+        <div class="price">50₺</div>
+        <ul>
+          <li>Özel Giriş Mesajı</li>
+          <li>/kit vip Erişimi</li>
+          <li>+2 Arsa Hakkı</li>
+        </ul>
+        <button class="buy-btn" onclick="alert('Satın almak için giriş yapıp bakiye yüklemelisiniz.')">Satın Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">VIP+</div>
+        <h3>VIP+ Üyelik</h3>
+        <div class="price">100₺</div>
+        <ul>
+          <li>VIP Özelliklerinin Tümü</li>
+          <li>/kit vipp Erişimi</li>
+          <li>Sohbette Renkli Yazı</li>
+        </ul>
+        <button class="buy-btn" onclick="alert('Satın almak için giriş yapıp bakiye yüklemelisiniz.')">Satın Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">MVP</div>
+        <h3>MVP Üyelik</h3>
+        <div class="price">150₺</div>
+        <ul>
+          <li>VIP+ Özelliklerinin Tümü</li>
+          <li>/kit mvp Erişimi</li>
+          <li>/fly Uçuş Yetkisi</li>
+        </ul>
+        <button class="buy-btn" onclick="alert('Satın almak için giriş yapıp bakiye yüklemelisiniz.')">Satın Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">MVP+</div>
+        <h3>MVP+ Üyelik</h3>
+        <div class="price">200₺</div>
+        <ul>
+          <li>MVP Özelliklerinin Tümü</li>
+          <li>/kit mvpp Erişimi</li>
+          <li>Sanal Sandık (5 Sayfa)</li>
+        </ul>
+        <button class="buy-btn" onclick="alert('Satın almak için giriş yapıp bakiye yüklemelisiniz.')">Satın Al</button>
+      </div>
+      <div class="tier featured">
+        <div class="ribbon">En Popüler</div>
+        <div class="tag">LEGACY</div>
+        <h3>LEGACY Üyelik</h3>
+        <div class="price">300₺</div>
+        <ul>
+          <li>Tüm Üyelik Hakları</li>
+          <li>/kit legacy Özel Kiti</li>
+          <li>Sınırsız Arsa Hakkı</li>
+          <li>Özel Discord Rolü</li>
+        </ul>
+        <button class="buy-btn" onclick="alert('Satın almak için giriş yapıp bakiye yüklemelisiniz.')">Satın Al</button>
+      </div>
+    </div>
+    <div class="shop-note">* Satın alınan ürünler otomatik olarak oyun içi hesabınıza tanımlanır.</div>
+  </div>
+</section>
+
+<section id="destekciler">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold-bright);">Onur Listesi</div>
+      <h2>Destekçiler Listesi</h2>
+      <p>Sunucumuza kredi yükleyerek katkıda bulunan en değerli oyuncularımız.</p>
+    </div>
+    <div class="board reveal">
+      <div class="board-head">
+        <div>Sıra</div>
+        <div>Kullanıcı</div>
+        <div>Kredi Miktarı</div>
+      </div>
+      <div id="supporters-container">
+        <div class="board-empty">
+          <p>Yükleniyor...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kurallar">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--danger);">Düzen</div>
+      <h2>Sunucu Kuralları</h2>
+      <p>Herkes için keyifli ve adil bir ortam sağlamak adına uymanız gereken kurallar.</p>
+    </div>
+    <div class="rules-list reveal">
+      <div class="rule-row">
+        <div class="num">01</div>
+        <div>
+          <h4>Hile ve Üçüncü Parti Yazılımlar</h4>
+          <p>Oyun dengesini bozan hile, makro ve ek yazılımların kullanımı kesinlikle yasaktır ve sınırsız uzaklaştırma sebebidir.</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="num">02</div>
+        <div>
+          <h4>Sohbet ve Saygı Düzeni</h4>
+          <p>Küfür, argo, reklam, siyaset, ırkçılık veya diğer oyuncuları kışkırtmaya yönelik davranışlar cezalandırılır.</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="num">03</div>
+        <div>
+          <h4>Hata Kullanımı (Bug Abuse)</h4>
+          <p>Sunucu veya oyun açıklarından yararlanarak haksız kazanç sağlamak yasaktır. Bulunan hatalar yetkililere bildirilmelidir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="yardim">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Destek</div>
+      <h2>Sıkça Sorulan Sorular</h2>
+      <p>Aklınıza takılabilecek temel sorular ve cevapları.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Sunucuya nasıl giriş yapabilirim? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Minecraft istemcinizi açıp Çoklu Oyunculu bölümünden "legacynw.craftmc.com.tr" adresini ekleyerek giriş yapabilirsiniz.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Nasıl kredi yükleyebilirim? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Sitemiz üzerinden kayıt olup giriş yaptıktan sonra veya yetkililerimizle iletişime geçerek güvenli şekilde bakiye yükleyebilirsiniz.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hesap">
+  <div class="wrap">
+    <div id="session-wrapper"></div>
+    <div class="auth-shell reveal" id="auth-shell">
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchAuthTab('login')">Giriş Yap</button>
+        <button class="auth-tab" onclick="switchAuthTab('register')">Kayıt Ol</button>
+      </div>
+      
+      <div class="auth-panel active" id="login-panel">
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="field">
+            <label>E-Posta Adresi</label>
+            <input type="email" id="login-email" required>
+          </div>
+          <div class="field">
+            <label>Şifre</label>
+            <input type="password" id="login-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+        </form>
+        <div class="msg" id="login-msg"></div>
+      </div>
+
+      <div class="auth-panel" id="register-panel">
+        <form id="register-form" onsubmit="handleRegister(event)">
+          <div class="field">
+            <label>Oyun İçi Kullanıcı Adı</label>
+            <input type="text" id="reg-username" required>
+          </div>
+          <div class="field">
+            <label>E-Posta Adresi</label>
+            <input type="email" id="reg-email" required>
+          </div>
+          <div class="field">
+            <label>Şifre</label>
+            <input type="password" id="reg-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
+        </form>
+        <div class="msg" id="register-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admin-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--gold-bright);">Yönetim Merkezi</div>
+      <h2>Sistem ve Oyuncu Yönetimi</h2>
+    </div>
+    
+    <div class="admin-grid">
+      <div class="stat">
+        <div class="n" id="stat-users-mini">0</div>
+        <div class="l">Toplam Kayıtlı Üye</div>
+      </div>
+    </div>
+
+    <div style="max-width:640px; margin: 0 auto 30px; background:var(--panel); padding:24px; border:1px solid var(--border); border-radius:10px;">
+      <h3 style="margin-bottom:15px; font-size:18px; text-transform:none; font-family:'Space Grotesk';">Oyuncu Bakiyesi Güncelle</h3>
+      <div class="field">
+        <label>Kullanıcı Adı</label>
+        <input type="text" id="credit-user" placeholder="Oyuncu adını girin">
+      </div>
+      <div class="field">
+        <label>Eklenecek Miktar (₺)</label>
+        <input type="number" id="credit-amount" placeholder="Örn: 50">
+      </div>
+      <button class="btn btn-gold" onclick="addCredit()">Krediyi Tanımla</button>
+      <div class="msg" id="admin-credit-msg"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">LEGACYNW</div>
+        <div class="footer-brand-desc">Kesintisiz, adil ve heyecan dolu Minecraft BoxMining topluluğu.</div>
+      </div>
+      <div>
+        <h4>Hızlı Menü</h4>
+        <a href="#haberler">Haberler</a>
+        <a href="#magaza">Mağaza</a>
+      </div>
+      <div>
+        <h4>Destek Merkezi</h4>
+        <a href="#yardim">Yardım / SSS</a>
+        <a href="https://discord.gg/TRSFz8sWm" target="_blank">Discord</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 LegacyNW. Tüm Hakları Saklıdır.</div>
+      <div style="color:var(--muted-2);">by triggerbabaa</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Firebase Bağlantı Bilgileri (Kendi Firebase bilgilerinizle doldurun)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  let db, auth;
+  let firebaseReady = false;
+  let currentUser = null;
+
+  try {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    auth = firebase.auth();
+    firebaseReady = true;
+  } catch(e) {
+    console.error("Firebase kurulumunda hata oluştu:", e);
+  }
+
+  // Mobil Menü Tetikleyici
+  const burger = document.getElementById('burger');
+  const header = document.getElementById('site-header');
+  burger.addEventListener('click', () => {
+    header.classList.toggle('open');
+  });
+
+  // Sunucu IP Kopyalama Fonksiyonu
+  function copyIP() {
+    const ipText = document.getElementById('ip-value').textContent;
+    navigator.clipboard.writeText(ipText).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = "Kopyalandı!";
+      setTimeout(() => { btn.textContent = "Kopyala"; }, 2000);
+    });
+  }
+
+  // Sayfa Kaydırma Animasyonları Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Giriş/Kayıt Sekme Değişimi
+  function switchAuthTab(type) {
+    document.querySelectorAll('.auth-tab').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+    if(type === 'login') {
+      document.querySelector('.auth-tabs button:nth-child(1)').classList.add('active');
+      document.getElementById('login-panel').classList.add('active');
+    } else {
+      document.querySelector('.auth-tabs button:nth-child(2)').classList.add('active');
+      document.getElementById('register-panel').classList.add('active');
+    }
+  }
+
+  // Kullanıcı Giriş Kontrolü
+  async function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const pass = document.getElementById('login-password').value;
+    const msg = document.getElementById('login-msg');
+    msg.className = "msg"; msg.textContent = "Giriş yapılıyor...";
+
+    try {
+      await auth.signInWithEmailAndPassword(email, pass);
+      msg.textContent = "Giriş başarılı!"; msg.classList.add('ok');
+    } catch(err) {
+      msg.textContent = "Hata: " + err.message; msg.classList.add('err');
+    }
+  }
+
+  // Kullanıcı Kayıt Kontrolü
+  async function handleRegister(e) {
+    e.preventDefault();
+    const username = document.getElementById('reg-username').value;
+    const email = document.getElementById('reg-email').value;
+    const pass = document.getElementById('reg-password').value;
+    const msg = document.getElementById('register-msg');
+    msg.className = "msg"; msg.textContent = "Kayıt oluşturuluyor...";
+
+    try {
+      const res = await auth.createUserWithEmailAndPassword(email, pass);
+      await db.collection('users').doc(res.user.uid).set({
+        username: username,
+        rank: 'Üye',
+        credit: 0
+      });
+      msg.textContent = "Kayıt başarıyla tamamlandı!"; msg.classList.add('ok');
+    } catch(err) {
+      msg.textContent = "Hata: " + err.message; msg.classList.add('err');
+    }
+  }
+
+  // Oturum Bilgisi Güncelleme ve Arayüze Yazma
+  function renderSession() {
+    const wrapper = document.getElementById('session-wrapper');
+    const authShell = document.getElementById('auth-shell');
+    const adminLink = document.getElementById('admin-nav-link');
+    const adminSection = document.getElementById('admin-section');
+
+    if(currentUser) {
+      authShell.style.display = 'none';
+      wrapper.innerHTML = `
+        <div class="session-bar">
+          <div class="who">Hoş geldin, <span>${currentUser.username}</span> [${currentUser.rank}]</div>
+          <div>Bakiye: <span style="color:var(--ok); font-weight:700;">${currentUser.credit}₺</span></div>
+          <button class="btn btn-ghost" style="padding:6px 12px; font-size:12px;" onclick="auth.signOut()">Çıkış Yap</button>
+        </div>
+      `;
+      if(currentUser.rank === 'Kurucu' || currentUser.rank === 'Yönetici') {
+        adminLink.style.display = 'inline-block';
+        adminSection.style.display = 'block';
+      } else {
+        adminLink.style.display = 'none';
+        adminSection.style.display = 'none';
+      }
+    } else {
+      authShell.style.display = 'block';
+      wrapper.innerHTML = '';
+      adminLink.style.display = 'none';
+      adminSection.style.display = 'none';
+    }
+  }
+
+  // Kurucu İçin Kredi Verme Yetkisi
+  async function addCredit() {
+    const user = document.getElementById('credit-user').value;
+    const amount = parseFloat(document.getElementById('credit-amount').value);
+    const msg = document.getElementById('admin-credit-msg');
+    msg.className = "msg"; msg.textContent = "İşlem yürütülüyor...";
+
+    if(!user || isNaN(amount)) {
+      msg.textContent = "Lütfen alanları tam ve doğru doldurun."; msg.classList.add('err');
+      return;
+    }
+
+    try {
+      const snap = await db.collection('users').where('username', '==', user).get();
+      if(snap.empty) {
+        msg.textContent = 'Oyuncu bulunamadı.'; msg.classList.add('err');
+        return;
+      }
+      const docRef = snap.docs[0].ref;
+      const current = snap.docs[0].data().credit || 0;
+      const newCredit = current + amount;
+      await docRef.update({credit: newCredit});
+
+      msg.textContent = user + ' kullanıcısının yeni bakiyesi: ' + newCredit + '₺'; msg.classList.add('ok');
+      document.getElementById('credit-amount').value = '';
+      if(currentUser && currentUser.username === user) {
+        currentUser.credit = newCredit;
+        renderSession();
+      }
+      updateMiniStat();
+    } catch(e) {
+      msg.textContent = 'İşlem başarısız (Yetki hatası): ' + e.message; msg.classList.add('err');
+    }
+  }
+
+  // Yönetim Paneli Toplam Üye Sayısı Güncelleme
+  async function updateMiniStat() {
+    if(!firebaseReady) return;
+    try {
+      const snap = await db.collection('users').get();
+      document.getElementById('stat-users-mini').textContent = snap.size;
+    } catch(e) {
+      // Yetki dışı okumalarda sessizce geçilir
+    }
+  }
+
+  // Sıkça Sorulan Sorular Akordeon Çalışma Yapısı
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Minecraft API ile Canlı Oyuncu Sayısı Çekme
+  async function fetchServerStatus() {
+    try {
+      const res = await fetch('https://api.mcsrvstat.us/2/legacynw.craftmc.com.tr');
+      const data = await res.json();
+      if(data.online) {
+        document.getElementById('server-status-text').textContent = "Aktif";
+        document.getElementById('online-count').textContent = data.players.online;
+      } else {
+        document.getElementById('server-status-text').textContent = "Bakımda / Pasif";
+        document.getElementById('server-status-text').style.color = "var(--danger)";
+      }
+    } catch (e) {
+      document.getElementById('server-status-text').textContent = "Bağlantı Yok";
+    }
+  }
+
+  // Haberleri ve En Çok Destek Verenleri Listeleme
+  async function loadNewsAndSupporters() {
+    if(!firebaseReady) return;
+    try {
+      // Dinamik Haber Çekimi
+      const newsSnap = await db.collection('news').limit(3).get();
+      const newsContainer = document.getElementById('news-container');
+      if(!newsSnap.empty) {
+        newsContainer.innerHTML = '';
+        newsSnap.forEach(doc => {
+          const data = doc.data();
+          newsContainer.innerHTML += `
+            <div style="padding:18px; border-bottom:1px solid var(--border-soft);">
+              <h4 style="color:var(--blue-bright); margin:0 0 6px; text-transform:none; font-family:'Space Grotesk'; font-size:16px;">${data.title || 'Duyuru'}</h4>
+              <p style="margin:0; font-size:14px; color:var(--muted);">${data.content || ''}</p>
+            </div>`;
+        });
+      }
+
+      // En Çok Destek Olan Oyuncular (Krediye Göre Sıralı)
+      const suppSnap = await db.collection('users').orderBy('credit', 'desc').limit(5).get();
+      const suppContainer = document.getElementById('supporters-container');
+      if(!suppSnap.empty) {
+        suppContainer.innerHTML = '';
+        let rankIdx = 1;
+        suppSnap.forEach(doc => {
+          const data = doc.data();
+          if(data.credit > 0) {
+            suppContainer.innerHTML += `
+              <div class="urow">
+                <div>${rankIdx}. ${data.username}</div>
+                <div class="rank">${data.rank}</div>
+                <div style="color:var(--ok); font-weight:600;">${data.credit} ₺</div>
+              </div>`;
+            rankIdx++;
+          }
+        });
+        if(rankIdx === 1) {
+          suppContainer.innerHTML = '<div class="board-empty"><p>Bu ay henüz bakiye yükleyen olmadı.</p></div>';
+        }
+      }
+    } catch(e) {
+      console.error("Veriler çekilirken hata:", e);
+    }
+  }
+
+  // Fi
