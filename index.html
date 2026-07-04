@@ -8,201 +8,227 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0F1A;
-    --bg-2:#0E1524;
-    --panel:#121B2D;
-    --panel-2:#172135;
-    --border:#243252;
-    --border-soft:#1B2540;
-    --text:#EAF1FB;
-    --muted:#94A6C4;
-    --muted-2:#5C6C8C;
-    --blue:#3D7FE8;
-    --blue-bright:#6FA3F5;
-    --gold:#F0B429;
-    --gold-bright:#FFCE5C;
-    --ok:#4ADE80;
-    --danger:#FF6B6B;
+    --bg: #060a13;
+    --bg-2: #090f1f;
+    --panel: rgba(18, 27, 45, 0.7);
+    --panel-hover: rgba(23, 35, 59, 0.85);
+    --border: rgba(61, 127, 232, 0.15);
+    --border-hover: rgba(61, 127, 232, 0.4);
+    --border-soft: rgba(255, 255, 255, 0.05);
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --muted-2: #475569;
+    --blue: #3d7fe8;
+    --blue-bright: #6fa3f5;
+    --blue-glow: rgba(61, 127, 232, 0.25);
+    --gold: #f0b429;
+    --gold-bright: #ffce5c;
+    --gold-glow: rgba(240, 180, 41, 0.25);
+    --ok: #4ade80;
+    --danger: #ef4444;
   }
+  
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   ::selection{background:var(--blue);color:#050912;}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3,.display{font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:0.01em;font-weight:800;margin:0;}
+  
+  /* Özel Scrollbar */
+  ::-webkit-scrollbar {width: 8px;}
+  ::-webkit-scrollbar-track {background: var(--bg);}
+  ::-webkit-scrollbar-thumb {background: var(--muted-2); border-radius: 4px;}
+  ::-webkit-scrollbar-thumb:hover {background: var(--blue-bright);}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x: hidden;
+  }
+  
+  h1,h2,h3,.display{font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:0.02em;font-weight:800;margin:0;}
   .mono{font-family:'JetBrains Mono',monospace;}
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{animation:none !important;transition:none !important;}.reveal{opacity:1;transform:none;}}
-
-  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:'Space Grotesk';font-weight:600;font-size:14.5px;padding:13px 26px;border-radius:6px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;}
-  .btn-primary{background:var(--blue);color:#04070D;}
-  .btn-primary:hover{background:var(--blue-bright);box-shadow:0 6px 22px rgba(61,127,232,0.4);transform:translateY(-1px);}
-  .btn-gold{background:var(--gold);color:#241900;}
-  .btn-gold:hover{background:var(--gold-bright);box-shadow:0 6px 22px rgba(240,180,41,0.3);transform:translateY(-1px);}
-  .btn-ghost{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
-  .btn-ghost:hover{border-color:var(--blue-bright);color:var(--blue-bright);}
+  
+  /* Butonlar */
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:'Space Grotesk';font-weight:600;font-size:14.5px;padding:14px 28px;border-radius:8px;transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);}
+  .btn-primary{background:linear-gradient(135deg, var(--blue), var(--blue-bright));color:#04070D;box-shadow: 0 4px 15px var(--blue-glow);}
+  .btn-primary:hover{box-shadow:0 6px 25px var(--blue-glow);transform:translateY(-2px);filter: brightness(1.1);}
+  .btn-gold{background:linear-gradient(135deg, var(--gold), var(--gold-bright));color:#241900;box-shadow: 0 4px 15px var(--gold-glow);}
+  .btn-gold:hover{box-shadow:0 6px 25px var(--gold-glow);transform:translateY(-2px);filter: brightness(1.1);}
+  .btn-ghost{background:rgba(255,255,255,0.02);border:1px solid var(--border);color:var(--text);backdrop-filter: blur(5px);}
+  .btn-ghost:hover{border-color:var(--blue-bright);color:var(--blue-bright);background:rgba(61,127,232,0.05);transform:translateY(-1px);}
   .btn-block{width:100%;justify-content:center;}
+  
   a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--blue-bright);outline-offset:2px;}
 
-  /* ---------- NAV ---------- */
-  header{position:sticky;top:0;z-index:200;background:rgba(10,15,26,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft);}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Big Shoulders Display';font-weight:900;font-size:22px;letter-spacing:0.03em;}
-  .crest{width:32px;height:32px;position:relative;flex:none;}
-  .crest svg{width:100%;height:100%;}
-  .navlinks{display:flex;gap:28px;align-items:center;font-size:14px;}
-  .navlinks a{color:var(--muted);position:relative;padding:4px 0;}
-  .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--blue-bright);transition:width .2s ease;}
+  /* ---------- NAV (GLASSMORPHISM) ---------- */
+  header{position:sticky;top:0;z-index:200;background:rgba(6, 10, 19, 0.75);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-soft);box-shadow: 0 4px 30px rgba(0,0,0,0.2);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1180px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:12px;font-family:'Big Shoulders Display';font-weight:900;font-size:24px;letter-spacing:0.05em;color: #fff;}
+  .crest{width:34px;height:34px;position:relative;flex:none;filter: drop-shadow(0 0 8px var(--blue-glow));}
+  .navlinks{display:flex;gap:32px;align-items:center;font-size:14px;font-weight: 500;}
+  .navlinks a{color:var(--muted);position:relative;padding:4px 0;transition: color .2s;}
+  .navlinks a::after{content:"";position:absolute;left:50%;bottom:-2px;width:0;height:2px;background:var(--blue-bright);transition:all .25s ease;transform: translateX(-50%);border-radius: 2px;}
   .navlinks a:hover{color:var(--text);}
   .navlinks a:hover::after{width:100%;}
-  .nav-actions{display:flex;gap:10px;align-items:center;}
+  .nav-actions{display:flex;gap:12px;align-items:center;}
+  
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
-  .burger span{width:22px;height:2px;background:var(--text);display:block;}
-  .mobile-menu{display:none;flex-direction:column;padding:0 24px 18px;}
-  .mobile-menu a{padding:12px 0;border-top:1px solid var(--border-soft);color:var(--muted);font-size:15px;}
+  .burger span{width:22px;height:2px;background:var(--text);display:block;transition: .3s;}
+  .mobile-menu{display:none;flex-direction:column;padding:0 24px 18px;background: var(--bg-2);}
+  .mobile-menu a{padding:14px 0;border-top:1px solid var(--border-soft);color:var(--muted);font-size:15px;}
   header.open .mobile-menu{display:flex;}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;overflow:hidden;padding:110px 0 70px;text-align:center;border-bottom:1px solid var(--border-soft);}
+  .hero{position:relative;overflow:hidden;padding:140px 0 90px;text-align:center;border-bottom:1px solid var(--border-soft);}
   .hero::before{
     content:"";position:absolute;inset:0;z-index:0;
     background:
-      radial-gradient(ellipse 900px 500px at 50% -10%,rgba(61,127,232,0.22),transparent 60%),
-      radial-gradient(ellipse 700px 500px at 90% 100%,rgba(240,180,41,0.08),transparent 60%),
-      repeating-linear-gradient(0deg,transparent 0 39px,rgba(111,163,245,0.03) 39px 40px),
-      repeating-linear-gradient(90deg,transparent 0 39px,rgba(111,163,245,0.03) 39px 40px);
+      radial-gradient(circle 600px at 50% -10%, rgba(61,127,232,0.18), transparent 70%),
+      radial-gradient(circle 500px at 90% 120%, rgba(240,180,41,0.06), transparent 70%),
+      repeating-linear-gradient(0deg, transparent 0 49px, rgba(111,163,245,0.015) 49px 50px),
+      repeating-linear-gradient(90deg, transparent 0 49px, rgba(111,163,245,0.015) 49px 50px);
   }
-  .floating-block{position:absolute;width:46px;height:46px;border:1px solid rgba(111,163,245,0.35);background:linear-gradient(145deg,rgba(61,127,232,0.18),rgba(18,27,45,0.4));border-radius:6px;animation:float 7s ease-in-out infinite;z-index:0;}
-  .fb1{top:18%;left:10%;animation-delay:0s;}
-  .fb2{top:65%;left:6%;width:28px;height:28px;animation-delay:1.2s;}
-  .fb3{top:24%;right:9%;animation-delay:0.6s;}
-  .fb4{top:60%;right:14%;width:34px;height:34px;border-color:rgba(240,180,41,0.35);background:linear-gradient(145deg,rgba(240,180,41,0.16),rgba(18,27,45,0.4));animation-delay:1.8s;}
-  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(6deg);}}
-  .hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 24px;}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono';color:var(--ok);font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--border);padding:7px 14px;border-radius:20px;margin-bottom:24px;}
-  .dot{width:6px;height:6px;background:var(--ok);border-radius:50%;box-shadow:0 0 8px var(--ok);}
-  .hero h1{font-size:clamp(40px,6.4vw,68px);line-height:0.98;margin-bottom:20px;}
-  .hero h1 .accent{background:linear-gradient(90deg,var(--blue-bright),var(--gold-bright));-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero p.lead{color:var(--muted);font-size:17px;margin:0 0 34px;}
-  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  
+  /* Animasyonlu Küpler */
+  .floating-block{position:absolute;width:46px;height:46px;border:1px solid rgba(111,163,245,0.2);background:linear-gradient(145deg,rgba(61,127,232,0.1),rgba(18,27,45,0.2));border-radius:8px;animation:float 8s ease-in-out infinite;z-index:0;backdrop-filter: blur(2px);}
+  .fb1{top:15%;left:8%;animation-delay:0s;}
+  .fb2{top:70%;left:5%;width:28px;height:28px;animation-delay:1.5s;animation-duration: 6s;}
+  .fb3{top:20%;right:8%;animation-delay:0.8s;}
+  .fb4{top:65%;right:12%;width:34px;height:34px;border-color:rgba(240,180,41,0.2);background:linear-gradient(145deg,rgba(240,180,41,0.08),rgba(18,27,45,0.2));animation-delay:2.2s;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-20px) rotate(8deg);}}
+  
+  .hero-content{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono';color:var(--ok);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;border:1px solid rgba(74, 222, 128, 0.2);background: rgba(74, 222, 128, 0.05);padding:8px 16px;border-radius:30px;margin-bottom:28px;}
+  .dot{width:6px;height:6px;background:var(--ok);border-radius:50%;box-shadow:0 0 10px var(--ok);animation: pulse 2s infinite;}
+  @keyframes pulse {0%, 100% {opacity: 0.5;} 50% {opacity: 1; transform: scale(1.2);}}
+  
+  .hero h1{font-size:clamp(44px,7vw,76px);line-height:0.95;margin-bottom:24px;letter-spacing: -0.01em;}
+  .hero h1 .accent{background:linear-gradient(90deg,var(--blue-bright),var(--gold-bright));-webkit-background-clip:text;background-clip:text;color:transparent;filter: drop-shadow(0 2px 10px rgba(0,0,0,0.3));}
+  .hero p.lead{color:var(--muted);font-size:18px;margin:0 0 40px;max-width: 600px;margin-left: auto;margin-right: auto;}
+  .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
   /* ---------- SERVER STATUS BAR ---------- */
-  .status-bar{background:var(--panel);border-bottom:1px solid var(--border-soft);}
-  .status-inner{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:22px 24px;max-width:1180px;margin:0 auto;}
-  .status-item{display:flex;align-items:center;gap:10px;}
-  .status-item .label{font-family:'JetBrains Mono';font-size:11px;color:var(--muted-2);letter-spacing:0.08em;text-transform:uppercase;}
-  .ip-copy{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);padding:9px 8px 9px 14px;border-radius:6px;}
-  .ip-copy .value{font-family:'JetBrains Mono';font-size:15px;color:var(--blue-bright);font-weight:600;}
-  .ip-copy button{background:var(--blue);border:none;color:#04070D;font-weight:700;padding:7px 14px;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.06em;text-transform:uppercase;}
+  .status-bar{background:var(--bg-2);border-bottom:1px solid var(--border-soft);position: relative;z-index: 10;}
+  .status-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:24px 24px;max-width:1180px;margin:0 auto;}
+  .status-item{display:flex;align-items:center;gap:12px;}
+  .status-item .label{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;opacity: 0.7;}
+  .ip-copy{display:flex;align-items:center;gap:12px;background:rgba(6, 10, 19, 0.6);border:1px solid var(--border);padding:6px 6px 6px 16px;border-radius:8px;box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);}
+  .ip-copy .value{font-family:'JetBrains Mono';font-size:14.5px;color:var(--blue-bright);font-weight:600;}
+  .ip-copy button{background:var(--blue);border:none;color:#04070D;font-weight:700;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.05em;text-transform:uppercase;transition: background .2s;}
   .ip-copy button:hover{background:var(--blue-bright);}
-  .status-pill{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:13px;color:var(--ok);}
+  .status-pill{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:13px;color:var(--ok);background: rgba(74, 222, 128, 0.05);padding: 6px 14px;border-radius: 6px;border: 1px solid rgba(74, 222, 128, 0.15);}
 
-  section{padding:80px 0;border-bottom:1px solid var(--border-soft);}
-  .section-head{text-align:center;max-width:600px;margin:0 auto 46px;}
-  .section-head .eyebrow{background:var(--bg);}
-  .section-head h2{font-size:clamp(28px,4vw,40px);}
-  .section-head p{color:var(--muted);margin-top:12px;font-size:15.5px;}
+  section{padding:90px 0;border-bottom:1px solid var(--border-soft);position: relative;}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 54px;}
+  .section-head h2{font-size:clamp(32px,4.5vw,44px);margin-top:12px;}
+  .section-head p{color:var(--muted);font-size:16px;margin-top:14px;}
 
-  /* ---------- FEATURES ---------- */
-  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);}
-  .feature{background:var(--panel);padding:34px 24px;text-align:center;}
-  .feature .icon{width:36px;height:36px;margin:0 auto 18px;color:var(--blue-bright);}
-  .feature h3{font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:16.5px;font-weight:600;margin-bottom:8px;}
-  .feature p{color:var(--muted);font-size:13.5px;margin:0;}
+  /* ---------- FEATURES (GLASS GRID) ---------- */
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .feature{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:40px 28px;text-align:center;backdrop-filter:blur(8px);transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);}
+  .feature:hover{transform:translateY(-5px);background:var(--panel-hover);border-color:var(--border-hover);box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px var(--blue-glow);}
+  .feature .icon{width:40px;height:40px;margin:0 auto 22px;color:var(--blue-bright);filter: drop-shadow(0 0 6px var(--blue-glow));}
+  .feature h3{font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:18px;font-weight:600;margin-bottom:10px;color: #fff;}
+  .feature p{color:var(--muted);font-size:14px;line-height:1.5;}
 
   /* ---------- STORE ---------- */
-  .tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:end;}
-  .tier{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:28px 20px;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease;}
-  .tier:hover{transform:translateY(-4px);border-color:var(--blue-bright);}
-  .tier .tag{font-family:'JetBrains Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
-  .tier h3{font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:19px;font-weight:700;margin-bottom:4px;}
-  .tier .price{font-family:'JetBrains Mono';font-size:27px;color:var(--blue-bright);font-weight:700;margin:10px 0 16px;}
-  .tier ul{list-style:none;margin:0 0 20px;padding:0;flex:1;}
-  .tier li{font-size:12.5px;color:var(--muted);padding:7px 0;border-top:1px solid var(--border-soft);display:flex;gap:7px;}
+  .tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:end;padding-top:20px;}
+  .tier{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:32px 22px;display:flex;flex-direction:column;backdrop-filter:blur(8px);transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);}
+  .tier:hover{transform:translateY(-4px);border-color:var(--blue-bright);background:var(--panel-hover);box-shadow: 0 12px 30px rgba(0,0,0,0.4);}
+  .tier .tag{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;opacity: 0.6;}
+  .tier h3{font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:20px;font-weight:700;margin-bottom:6px;}
+  .tier .price{font-family:'JetBrains Mono';font-size:30px;color:var(--blue-bright);font-weight:700;margin:12px 0 20px;filter: drop-shadow(0 0 10px var(--blue-glow));}
+  .tier ul{list-style:none;margin:0 0 24px;padding:0;flex:1;}
+  .tier li{font-size:13px;color:var(--muted);padding:9px 0;border-top:1px solid var(--border-soft);display:flex;gap:8px;align-items: center;}
   .tier li:first-child{border-top:none;}
   .tier li::before{content:"✓";color:var(--blue-bright);font-weight:700;}
-  .tier.featured{background:linear-gradient(160deg,rgba(240,180,41,0.08),var(--panel-2));border-color:var(--gold);transform:scale(1.05);position:relative;}
-  .tier.featured:hover{transform:scale(1.05) translateY(-4px);}
-  .tier.featured .price{color:var(--gold-bright);}
+  
+  /* VIP Öne Çıkan Kart */
+  .tier.featured{background:linear-gradient(160deg, rgba(240,180,41,0.05), rgba(18,27,45,0.85));border-color:var(--gold);transform:scale(1.04);position:relative;box-shadow: 0 10px 25px rgba(0,0,0,0.3);}
+  .tier.featured:hover{transform:scale(1.04) translateY(-6px);border-color:var(--gold-bright);box-shadow:0 15px 35px rgba(240,180,41,0.15), 0 0 25px var(--gold-glow);}
+  .tier.featured .price{color:var(--gold-bright);filter: drop-shadow(0 0 10px var(--gold-glow));}
   .tier.featured li::before{color:var(--gold-bright);}
-  .ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#241900;font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;font-weight:700;white-space:nowrap;}
-  .buy-btn{border:1px solid var(--blue);background:transparent;color:var(--blue-bright);padding:11px;font-weight:600;cursor:pointer;font-size:12.5px;font-family:'Space Grotesk';text-transform:uppercase;letter-spacing:0.04em;border-radius:6px;transition:all .15s ease;}
-  .buy-btn:hover{background:var(--blue);color:#04070D;}
-  .tier.featured .buy-btn{border-color:var(--gold);color:var(--gold-bright);}
-  .tier.featured .buy-btn:hover{background:var(--gold);color:#241900;}
-  .shop-note{text-align:center;margin-top:28px;color:var(--muted-2);font-size:13px;font-family:'JetBrains Mono';}
-
-  /* ---------- LEADERBOARD ---------- */
-  .board{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:640px;margin:0 auto;}
-  .board-head{display:grid;grid-template-columns:60px 1fr 140px;padding:14px 20px;background:var(--bg-2);font-family:'JetBrains Mono';font-size:11px;color:var(--muted-2);letter-spacing:0.08em;text-transform:uppercase;}
-  .board-empty{padding:50px 24px;text-align:center;}
-  .board-empty .icon{width:40px;height:40px;margin:0 auto 16px;color:var(--muted-2);}
-  .board-empty p{color:var(--muted);font-size:14.5px;margin:0 0 20px;}
+  .ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, var(--gold), var(--gold-bright));color:#241900;font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 16px;border-radius:20px;font-weight:700;white-space:nowrap;box-shadow: 0 4px 10px var(--gold-glow);}
+  
+  .buy-btn{border:1px solid var(--blue);background:rgba(61,127,232,0.03);color:var(--blue-bright);padding:12px;font-weight:600;cursor:pointer;font-size:13px;font-family:'Space Grotesk';text-transform:uppercase;letter-spacing:0.05em;border-radius:8px;transition:all .2s;}
+  .buy-btn:hover{background:var(--blue);color:#04070D;box-shadow: 0 4px 12px var(--blue-glow);}
+  .tier.featured .buy-btn{border-color:var(--gold);color:var(--gold-bright);background: rgba(240,180,41,0.03);}
+  .tier.featured .buy-btn:hover{background:var(--gold);color:#241900;box-shadow: 0 4px 12px var(--gold-glow);}
+  .shop-note{text-align:center;margin-top:34px;color:var(--muted-2);font-size:13px;font-family:'JetBrains Mono';}
 
   /* ---------- RULES ---------- */
   .rules-list{max-width:760px;margin:0 auto;border-top:1px solid var(--border-soft);}
-  .rule-row{display:grid;grid-template-columns:50px 1fr;gap:16px;padding:20px 4px;border-bottom:1px solid var(--border-soft);}
-  .rule-row .num{font-family:'JetBrains Mono';color:var(--blue-bright);font-size:19px;font-weight:700;}
-  .rule-row h4{font-family:'Space Grotesk';font-weight:600;font-size:15.5px;margin-bottom:4px;}
-  .rule-row p{margin:0;color:var(--muted);font-size:14px;}
+  .rule-row{display:grid;grid-template-columns:50px 1fr;gap:20px;padding:24px 8px;border-bottom:1px solid var(--border-soft);transition: background .2s;}
+  .rule-row:hover{background: rgba(255,255,255,0.01);}
+  .rule-row .num{font-family:'JetBrains Mono';color:var(--blue-bright);font-size:20px;font-weight:700;}
+  .rule-row h4{font-family:'Space Grotesk';font-weight:600;font-size:16.5px;margin-bottom:6px;color:#fff;}
+  .rule-row p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5;}
 
-  /* ---------- AUTH ---------- */
-  .auth-shell{max-width:420px;margin:0 auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-  .auth-tabs{display:flex;border-bottom:1px solid var(--border);}
-  .auth-tab{flex:1;padding:16px;text-align:center;background:none;border:none;color:var(--muted);font-family:'Space Grotesk';font-weight:600;cursor:pointer;font-size:14px;border-bottom:2px solid transparent;}
-  .auth-tab.active{color:var(--blue-bright);border-bottom-color:var(--blue-bright);}
-  .auth-panel{padding:28px 26px;display:none;}
+  /* ---------- AUTH (GÜVENLİ GÖRÜNÜM) ---------- */
+  .auth-shell{max-width:420px;margin:0 auto;background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;backdrop-filter:blur(10px);box-shadow: 0 15px 35px rgba(0,0,0,0.4);}
+  .auth-tabs{display:flex;border-bottom:1px solid var(--border-soft);background: rgba(0,0,0,0.15);}
+  .auth-tab{flex:1;padding:18px;text-align:center;background:none;border:none;color:var(--muted);font-family:'Space Grotesk';font-weight:600;cursor:pointer;font-size:14.5px;border-bottom:2px solid transparent;transition: all .2s;}
+  .auth-tab.active{color:var(--blue-bright);border-bottom-color:var(--blue-bright);background: rgba(61,127,232,0.02);}
+  .auth-panel{padding:34px 30px;display:none;}
   .auth-panel.active{display:block;}
-  .field{margin-bottom:15px;}
-  .field label{display:block;font-family:'JetBrains Mono';font-size:10.5px;color:var(--muted-2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
-  .field input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 12px;font-family:'Space Grotesk';font-size:14px;border-radius:6px;}
-  .field input:focus{border-color:var(--blue);outline:none;}
-  .msg{font-size:12.5px;margin-top:10px;font-family:'JetBrains Mono';min-height:16px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-family:'JetBrains Mono';font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;opacity: 0.8;}
+  .field input{width:100%;background:rgba(6, 10, 19, 0.5);border:1px solid var(--border);color:var(--text);padding:13px 16px;font-family:'Space Grotesk';font-size:14.5px;border-radius:8px;transition: all .25s;box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);}
+  .field input:focus{border-color:var(--blue-bright);outline:none;box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 0 12px var(--blue-glow);background:rgba(6, 10, 19, 0.8);}
+  
+  .msg{font-size:13px;margin-top:12px;font-family:'JetBrains Mono';min-height:18px;text-align: center;}
   .msg.ok{color:var(--ok);}
   .msg.err{color:var(--danger);}
-  .session-bar{max-width:640px;margin:0 auto 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:var(--panel-2);border:1px solid var(--gold);padding:16px 20px;border-radius:8px;font-family:'JetBrains Mono';font-size:13px;}
+  
+  /* Giriş Yapıldığında Görünecek Profil Barı */
+  .session-bar{max-width:640px;margin:0 auto 20px;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:linear-gradient(135deg, rgba(240,180,41,0.05), var(--panel));border:1px solid var(--gold);padding:18px 24px;border-radius:10px;font-family:'JetBrains Mono';font-size:13.5px;box-shadow: 0 4px 15px rgba(0,0,0,0.2);}
   .session-bar .who span{color:var(--gold-bright);font-weight:700;}
 
-  /* ---------- ADMIN ---------- */
+  /* ---------- ADMIN PANEL ---------- */
   #admin-section{display:none;}
-  .admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px;}
-  .stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:22px;text-align:center;}
-  .stat .n{font-family:'JetBrains Mono';font-size:22px;color:var(--gold-bright);font-weight:700;word-break:break-all;}
-  .stat .l{color:var(--muted-2);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;font-family:'JetBrains Mono';margin-top:8px;}
-  .admin-panel-locked{padding:50px 0;text-align:center;color:var(--muted);font-family:'JetBrains Mono';font-size:13.5px;}
-  .userlist{max-width:640px;margin:0 auto;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-  .urow{display:grid;grid-template-columns:1fr 130px;padding:12px 18px;border-top:1px solid var(--border-soft);font-family:'JetBrains Mono';font-size:13px;}
-  .urow.head{background:var(--bg-2);color:var(--muted-2);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;border-top:none;}
+  .admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px;}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;backdrop-filter:blur(8px);}
+  .stat .n{font-family:'JetBrains Mono';font-size:24px;color:var(--gold-bright);font-weight:700;word-break:break-all;filter: drop-shadow(0 0 8px var(--gold-glow));}
+  .stat .l{color:var(--muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-family:'JetBrains Mono';margin-top:8px;opacity: 0.7;}
+  
+  .userlist{max-width:640px;margin:0 auto;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .urow{display:grid;grid-template-columns:1fr 130px;padding:14px 20px;border-top:1px solid var(--border-soft);font-family:'JetBrains Mono';font-size:13.5px;}
+  .urow.head{background:rgba(0,0,0,0.2);color:var(--muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;border-top:none;}
   .urow .rank{color:var(--gold-bright);}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:60px 0 30px;}
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--border-soft);}
-  .footer-grid h4{font-family:'JetBrains Mono';font-size:11.5px;color:var(--muted-2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
-  .footer-grid a{display:block;color:var(--muted);font-size:14px;margin-bottom:11px;}
+  footer{padding:80px 0 40px;background: var(--bg-2);border-top: 1px solid var(--border-soft);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid var(--border-soft);}
+  .footer-grid h4{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:22px;opacity: 0.6;}
+  .footer-grid a{display:block;color:var(--muted);font-size:14.5px;margin-bottom:12px;transition: color .2s;}
   .footer-grid a:hover{color:var(--blue-bright);}
-  .footer-brand{font-family:'Big Shoulders Display';font-weight:900;font-size:22px;margin-bottom:12px;}
-  .footer-brand-desc{color:var(--muted-2);font-size:13.5px;max-width:300px;}
-  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;color:var(--muted-2);font-size:12.5px;font-family:'JetBrains Mono';}
+  .footer-brand{font-family:'Big Shoulders Display';font-weight:900;font-size:24px;margin-bottom:14px;letter-spacing: 0.05em;}
+  .footer-brand-desc{color:var(--muted);font-size:14px;max-width:300px;line-height: 1.5;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:30px;color:var(--muted-2);font-size:13px;font-family:'JetBrains Mono';}
 
-  @media (max-width:900px){
+  /* Responsive Kırılmaları */
+  @media (max-width:1024px){
     .feature-grid{grid-template-columns:repeat(2,1fr);}
-    .tiers{grid-template-columns:repeat(2,1fr);}
-    .tier.featured{grid-column:1 / 3;transform:none;}
-    .tier.featured:hover{transform:translateY(-4px);}
+    .tiers{grid-template-columns:repeat(3,1fr); gap: 16px;}
+    .tier.featured{grid-column: span 1; transform: none;}
+    .tier.featured:hover{transform: translateY(-4px);}
+  }
+  @media (max-width:768px){
+    .navlinks, .nav-actions{display:none;}
+    .burger{display:flex;}
+    .status-inner{flex-direction:column;gap:20px;text-align: center;}
+    .tiers{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
-  @media (max-width:720px){
-    .navlinks,.nav-actions{display:none;}
-    .burger{display:flex;}
-    .status-inner{flex-direction:column;gap:16px;}
-    .feature-grid{grid-template-columns:1fr;}
-    .tiers{grid-template-columns:1fr;}
-    .tier.featured{grid-column:1;}
-    .footer-grid{grid-template-columns:1fr;}
+  @media (max-width:480px){
+    .feature-grid, .footer-grid{grid-template-columns:1fr;}
+    .admin-grid{grid-template-columns:repeat(2,1fr);}
   }
 </style>
 </head>
@@ -219,13 +245,12 @@
     <div class="navlinks">
       <a href="#ozellikler">Özellikler</a>
       <a href="#magaza">Mağaza</a>
-      <a href="#destekciler">Destekçiler</a>
       <a href="#kurallar">Kurallar</a>
       <a href="#hesap">Hesabım</a>
-      <a href="#admin-nav" id="admin-nav-link" style="display:none;color:var(--gold-bright);">Yönetim</a>
+      <a href="#admin-section" id="admin-nav-link" style="display:none;color:var(--gold-bright);">Yönetim</a>
     </div>
     <div class="nav-actions">
-      <a class="btn btn-ghost" href="#hesap">Giriş Yap</a>
+      <a class="btn btn-ghost" href="#hesap" id="nav-login-btn">Giriş Yap</a>
       <a class="btn btn-primary" href="https://discord.gg/TRSFz8sWm" target="_blank" rel="noopener">Discord</a>
     </div>
     <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -233,7 +258,6 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#ozellikler">Özellikler</a>
     <a href="#magaza">Mağaza</a>
-    <a href="#destekciler">Destekçiler</a>
     <a href="#kurallar">Kurallar</a>
     <a href="#hesap">Hesabım</a>
     <a href="https://discord.gg/TRSFz8sWm" target="_blank" rel="noopener">Discord</a>
@@ -252,351 +276,4 @@
     <div class="hero-actions">
       <button class="btn btn-primary" onclick="copyIP()">IP'yi Kopyala</button>
       <a class="btn btn-ghost" href="#magaza">Mağazaya Git</a>
-    </div>
-  </div>
-</section>
-
-<div class="status-bar">
-  <div class="status-inner">
-    <div class="status-item">
-      <span class="label">Sunucu IP</span>
-      <div class="ip-copy">
-        <span class="value" id="ip-value">legacynw.craftmc.com.tr</span>
-        <button onclick="copyIP()" id="copy-btn">Kopyala</button>
-      </div>
-    </div>
-    <div class="status-pill"><span class="dot"></span>Durum: Aktif</div>
-    <div class="status-item"><span class="label">Kayıtlı Hesap</span><span class="value mono" id="stat-users-mini" style="color:var(--gold-bright);">0</span></div>
-  </div>
-</div>
-
-<section id="ozellikler">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--blue-bright);">Neden LegacyNW</div>
-      <h2>Sade, adil, sürdürülebilir</h2>
-      <p>Karmaşık sistemler yerine iyi çalışan az sayıda mekanik, şeffaf yönetim ve gerçek bir topluluk kurmayı önceliğe alıyoruz.</p>
-    </div>
-    <div class="feature-grid reveal">
-      <div class="feature">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-8h14l2 8M3 12v8h18v-8M3 12h18"/></svg>
-        <h3>Dengeli Ekonomi</h3>
-        <p>Emeğin karşılığını veren, enflasyonu kontrol altında tutan bir piyasa.</p>
-      </div>
-      <div class="feature">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-        <h3>Adil Moderasyon</h3>
-        <p>Herkese aynı kurallar ve Discord üzerinden itiraz hakkı.</p>
-      </div>
-      <div class="feature">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
-        <h3>Gerçek Topluluk</h3>
-        <p>Botla şişirilmiş sayılar yok, sunucuyu gerçek oyuncular canlı tutar.</p>
-      </div>
-      <div class="feature">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <h3>7/24 Erişim</h3>
-        <p>Sunucumuza istediğin an bağlanabilirsin.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="magaza">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--blue-bright);">Mağaza</div>
-      <h2>Rütbeler</h2>
-      <p>Rütbe satışları sunucunun bakımına ve gelişimine katkı sağlar. Satın alma işlemleri Discord üzerinden onayla tamamlanır.</p>
-    </div>
-    <div class="tiers reveal">
-      <div class="tier">
-        <div class="tag">Kademe 01</div>
-        <h3>VIP</h3>
-        <div class="price">40₺</div>
-        <ul><li>Özel isim rengi</li><li>/kit vip günlük</li><li>1 ek ev hakkı</li></ul>
-        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
-      </div>
-      <div class="tier">
-        <div class="tag">Kademe 02</div>
-        <h3>VIP+</h3>
-        <div class="price">60₺</div>
-        <ul><li>VIP'in tüm özellikleri</li><li>/fly (kendi arazinde)</li><li>2 ek ev hakkı</li></ul>
-        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
-      </div>
-      <div class="tier featured">
-        <div class="ribbon">En Popüler</div>
-        <div class="tag">Kademe 03</div>
-        <h3>LVIP</h3>
-        <div class="price">100₺</div>
-        <ul><li>VIP+'ın tüm özellikleri</li><li>Serbest /fly</li><li>4 ek ev hakkı</li><li>Özel parçacık efekti</li></ul>
-        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
-      </div>
-      <div class="tier">
-        <div class="tag">Kademe 04</div>
-        <h3>LVIP+</h3>
-        <div class="price">140₺</div>
-        <ul><li>LVIP'in tüm özellikleri</li><li>Sınırsız ev hakkı</li><li>Özel /nick hakkı</li></ul>
-        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
-      </div>
-      <div class="tier">
-        <div class="tag">Kademe 05</div>
-        <h3>Sponsor</h3>
-        <div class="price">250₺</div>
-        <ul><li>LVIP+'ın tüm özellikleri</li><li>Tanıtımlarda isim geçirme</li><li>Doğrudan yönetim iletişimi</li></ul>
-        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
-      </div>
-    </div>
-    <div class="shop-note reveal">Ödeme sistemi bu sayfaya entegre değildir; tüm satışlar Discord üzerinden manuel onayla yapılır.</div>
-  </div>
-</section>
-
-<section id="destekciler">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--gold-bright);">Onur Listesi</div>
-      <h2>Bu Ayın Destekçileri</h2>
-      <p>Sunucuya rütbe alarak destek olan oyuncular burada listelenir.</p>
-    </div>
-    <div class="board reveal">
-      <div class="board-head"><div>#</div><div>Kullanıcı</div><div>Katkı</div></div>
-      <div class="board-empty">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
-        <p>Bu ay henüz destekçi yok — listeye ilk giren sen ol!</p>
-        <a class="btn btn-gold" href="#magaza">Mağazaya Git</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="kurallar">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--blue-bright);">Topluluk</div>
-      <h2>Kurallar</h2>
-      <p>Herkes için adil bir ortam olması adına lütfen kurallara uy.</p>
-    </div>
-    <div class="rules-list reveal">
-      <div class="rule-row"><span class="num">01</span><div><h4>Saygılı iletişim</h4><p>Hakaret, ırkçılık ve her türlü ayrımcılık kesinlikle yasaktır.</p></div></div>
-      <div class="rule-row"><span class="num">02</span><div><h4>Hile ve exploit yasak</h4><p>X-ray, hız hilesi veya bug abuse tespit edilirse kalıcı ban uygulanır.</p></div></div>
-      <div class="rule-row"><span class="num">03</span><div><h4>Griefing yapılmaz</h4><p>Başkasının arazisine izinsiz müdahale ve hırsızlık yasaktır.</p></div></div>
-      <div class="rule-row"><span class="num">04</span><div><h4>Reklam yasak</h4><p>Başka sunucuların IP'sini paylaşmak yasaktır.</p></div></div>
-      <div class="rule-row"><span class="num">05</span><div><h4>Yönetime saygı</h4><p>İtirazlar oyun içinde değil, Discord destek kanalından yapılır.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="hesap">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--blue-bright);">Hesap</div>
-      <h2>Giriş / Kayıt</h2>
-      <p>Site hesabın oyun içi hesabınla otomatik bağlı değildir; bu yalnızca profil ve rütbe takibi içindir.</p>
-    </div>
-    <div id="session-bar" class="session-bar reveal" style="display:none;">
-      <div class="who">Giriş yapıldı: <span id="session-user"></span> · Rütbe: <span id="session-rank"></span></div>
-      <button class="btn btn-ghost" onclick="logout()">Çıkış Yap</button>
-    </div>
-    <div class="auth-shell reveal" id="auth-shell">
-      <div class="auth-tabs">
-        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Giriş Yap</button>
-        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Kayıt Ol <span class="mono" style="font-size:9px;color:var(--muted-2);">(Kapalı)</span></button>
-      </div>
-      <div class="auth-panel active" id="panel-login">
-        <div class="field"><label>Kullanıcı Adı</label><input id="login-user" type="text" autocomplete="off"></div>
-        <div class="field"><label>Şifre</label><input id="login-pass" type="password" autocomplete="current-password"></div>
-        <button class="btn btn-primary btn-block" onclick="login()">Giriş Yap</button>
-        <div class="msg" id="login-msg"></div>
-      </div>
-      <div class="auth-panel" id="panel-register">
-        <div style="text-align:center;padding:10px 0 4px;">
-          <div class="mono" style="font-size:12.5px;color:var(--muted);line-height:1.7;">
-            Kayıt sistemi şu anda geçici olarak kapalı.<br>Yeni hesaplar için Discord üzerinden iletişime geç.
-          </div>
-          <button class="btn btn-ghost" style="margin-top:16px;" onclick="openDiscord()">Discord'a Git</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="admin-section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow" style="color:var(--gold-bright);">Kurucuya Özel</div>
-      <h2>Yönetim Paneli</h2>
-      <p>Bu panel sadece Kurucu rütbesine sahip hesaplarda görünür.</p>
-    </div>
-    <div class="admin-grid reveal">
-      <div class="stat"><div class="n" id="stat-users">0</div><div class="l">Kayıtlı Hesap</div></div>
-      <div class="stat"><div class="n">40-140₺</div><div class="l">VIP Fiyat Aralığı</div></div>
-      <div class="stat"><div class="n">250₺</div><div class="l">Sponsor Paketi</div></div>
-      <div class="stat"><div class="n mono" style="font-size:14px;">legacynw.craftmc.com.tr</div><div class="l">Sunucu IP</div></div>
-    </div>
-    <h3 style="font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:17px;margin-bottom:14px;text-align:center;">Kayıtlı Hesaplar</h3>
-    <div class="userlist reveal">
-      <div class="urow head"><div>Kullanıcı Adı</div><div>Rütbe</div></div>
-      <div id="userlist-body"></div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap" id="admin-locked-msg" style="display:none;">
-  <div class="admin-panel-locked">Bu alanı görüntülemek için Kurucu rütbesiyle giriş yapmalısın.</div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">LEGACYNW</div>
-        <p class="footer-brand-desc">Dengeli ekonomi ve adil yönetim üzerine kurulu bir Minecraft sunucusu. legacynw.craftmc.com.tr adresinden bize katıl.</p>
-      </div>
-      <div>
-        <h4>Hızlı Menü</h4>
-        <a href="#ozellikler">Özellikler</a>
-        <a href="#magaza">Mağaza</a>
-        <a href="#kurallar">Kurallar</a>
-        <a href="#hesap">Hesabım</a>
-      </div>
-      <div>
-        <h4>Topluluk</h4>
-        <a href="https://discord.gg/TRSFz8sWm" target="_blank" rel="noopener">Discord</a>
-        <a href="#destekciler">Destekçiler</a>
-      </div>
-      <div>
-        <h4>Bağlantılar</h4>
-        <a href="#">Hizmet Şartları</a>
-        <a href="#">Gizlilik Politikası</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>LegacyNW © 2026 · Tüm hakları saklıdır.</span>
-      <span>Mojang / Microsoft ile bağlantılı değildir</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-document.getElementById('burger').addEventListener('click', ()=>{document.getElementById('site-header').classList.toggle('open');});
-document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click', ()=>document.getElementById('site-header').classList.remove('open'));});
-
-function copyIP(){
-  const ip = document.getElementById('ip-value').textContent;
-  navigator.clipboard.writeText(ip).then(()=>{
-    const btn = document.getElementById('copy-btn');
-    const old = btn.textContent;
-    btn.textContent = 'Kopyalandı';
-    setTimeout(()=>btn.textContent = old, 1500);
-  });
-}
-function openDiscord(){window.open('https://discord.gg/TRSFz8sWm','_blank');}
-
-function switchTab(tab){
-  document.getElementById('tab-login').classList.toggle('active', tab==='login');
-  document.getElementById('tab-register').classList.toggle('active', tab==='register');
-  document.getElementById('panel-login').classList.toggle('active', tab==='login');
-  document.getElementById('panel-register').classList.toggle('active', tab==='register');
-}
-
-let currentUser = null;
-
-async function ensureFounderAccount(){
-  try{ await window.storage.get('users:triggerbaba', true); }
-  catch(e){ await window.storage.set('users:triggerbaba', JSON.stringify({password:'resul3163', rank:'Kurucu'}), true); }
-}
-
-async function register(){ return; } // Kayıt sistemi geçici olarak kapalı.
-
-async function login(){
-  const user = document.getElementById('login-user').value.trim();
-  const pass = document.getElementById('login-pass').value;
-  const msg = document.getElementById('login-msg');
-  msg.className = 'msg';
-  try{
-    const res = await window.storage.get('users:'+user, true);
-    const data = JSON.parse(res.value);
-    if(data.password !== pass){ msg.textContent = 'Kullanıcı adı veya şifre hatalı.'; msg.classList.add('err'); return; }
-    currentUser = {username:user, rank:data.rank};
-    msg.textContent = '';
-    renderSession();
-  }catch(e){
-    msg.textContent = 'Kullanıcı adı veya şifre hatalı.'; msg.classList.add('err');
-  }
-}
-
-function logout(){ currentUser = null; renderSession(); }
-
-function renderSession(){
-  const bar = document.getElementById('session-bar');
-  const shell = document.getElementById('auth-shell');
-  const adminLink = document.getElementById('admin-nav-link');
-  const adminSection = document.getElementById('admin-section');
-  const lockedMsg = document.getElementById('admin-locked-msg');
-
-  if(currentUser){
-    bar.style.display = 'flex';
-    shell.style.display = 'none';
-    document.getElementById('session-user').textContent = currentUser.username;
-    document.getElementById('session-rank').textContent = currentUser.rank;
-  }else{
-    bar.style.display = 'none';
-    shell.style.display = 'block';
-  }
-
-  if(currentUser && currentUser.rank === 'Kurucu'){
-    adminLink.style.display = 'inline';
-    adminSection.style.display = 'block';
-    lockedMsg.style.display = 'none';
-    loadAdminData();
-  }else{
-    adminLink.style.display = 'none';
-    adminSection.style.display = 'none';
-    lockedMsg.style.display = 'block';
-  }
-}
-
-async function loadAdminData(){
-  try{
-    const list = await window.storage.list('users:', true);
-    const keys = list && list.keys ? list.keys : [];
-    document.getElementById('stat-users').textContent = keys.length;
-    const container = document.getElementById('userlist-body');
-    container.innerHTML = '';
-    for(const k of keys){
-      try{
-        const item = await window.storage.get(k, true);
-        const data = JSON.parse(item.value);
-        const uname = k.replace('users:','');
-        const row = document.createElement('div');
-        row.className = 'urow';
-        row.innerHTML = '<div>'+uname+'</div><div class="rank">'+data.rank+'</div>';
-        container.appendChild(row);
-      }catch(e){}
-    }
-  }catch(e){}
-}
-
-async function updateMiniStat(){
-  try{
-    const list = await window.storage.list('users:', true);
-    const keys = list && list.keys ? list.keys : [];
-    document.getElementById('stat-users-mini').textContent = keys.length;
-  }catch(e){}
-}
-
-document.getElementById('admin-nav-link').addEventListener('click', (e)=>{
-  e.preventDefault();
-  document.getElementById('admin-section').scrollIntoView({behavior:'smooth'});
-});
-
-ensureFounderAccount();
-renderSession();
-updateMiniStat();
-</script>
-
-</body>
-</html>
+    
