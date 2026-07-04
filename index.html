@@ -305,3 +305,298 @@
 <section id="magaza">
   <div class="wrap">
     <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--blue-bright);">Mağaza</div>
+      <h2>Rütbeler</h2>
+      <p>Rütbe satışları sunucunun bakımına ve gelişimine katkı sağlar. Satın alma işlemleri Discord üzerinden onayla tamamlanır.</p>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <div class="tag">Kademe 01</div>
+        <h3>VIP</h3>
+        <div class="price">40₺</div>
+        <ul><li>Özel isim rengi</li><li>/kit vip günlük</li><li>1 ek ev hakkı</li></ul>
+        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">Kademe 02</div>
+        <h3>VIP+</h3>
+        <div class="price">60₺</div>
+        <ul><li>VIP'in tüm özellikleri</li><li>/fly (kendi arazinde)</li><li>2 ek ev hakkı</li></ul>
+        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
+      </div>
+      <div class="tier featured">
+        <div class="ribbon">En Popüler</div>
+        <div class="tag">Kademe 03</div>
+        <h3>LVIP</h3>
+        <div class="price">100₺</div>
+        <ul><li>VIP+'ın tüm özellikleri</li><li>Serbest /fly</li><li>4 ek ev hakkı</li><li>Özel parçacık efekti</li></ul>
+        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">Kademe 04</div>
+        <h3>LVIP+</h3>
+        <div class="price">140₺</div>
+        <ul><li>LVIP'in tüm özellikleri</li><li>Sınırsız ev hakkı</li><li>Özel /nick hakkı</li></ul>
+        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
+      </div>
+      <div class="tier">
+        <div class="tag">Kademe 05</div>
+        <h3>Sponsor</h3>
+        <div class="price">250₺</div>
+        <ul><li>LVIP+'ın tüm özellikleri</li><li>Tanıtımlarda isim geçirme</li><li>Doğrudan yönetim iletişimi</li></ul>
+        <button class="buy-btn" onclick="openDiscord()">Discord'dan Al</button>
+      </div>
+    </div>
+    <div class="shop-note reveal">Ödeme sistemi bu sayfaya entegre değildir; tüm satışlar Discord üzerinden manuel onayla yapılır.</div>
+  </div>
+</section>
+
+<section id="destekciler">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold-bright);">Onur Listesi</div>
+      <h2>Bu Ayın Destekçileri</h2>
+      <p>Sunucuya rütbe alarak destek olan oyuncular burada listelenir.</p>
+    </div>
+    <div class="board reveal">
+      <div class="board-head"><div>#</div><div>Kullanıcı</div><div>Katkı</div></div>
+      <div class="board-empty">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
+        <p>Bu ay henüz destekçi yok — listeye ilk giren sen ol!</p>
+        <a class="btn btn-gold" href="#magaza">Mağazaya Git</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kurallar">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--blue-bright);">Topluluk</div>
+      <h2>Kurallar</h2>
+      <p>Herkes için adil bir ortam olması adına lütfen kurallara uy.</p>
+    </div>
+    <div class="rules-list reveal">
+      <div class="rule-row"><span class="num">01</span><div><h4>Saygılı iletişim</h4><p>Hakaret, ırkçılık ve her türlü ayrımcılık kesinlikle yasaktır.</p></div></div>
+      <div class="rule-row"><span class="num">02</span><div><h4>Hile ve exploit yasak</h4><p>X-ray, hız hilesi veya bug abuse tespit edilirse kalıcı ban uygulanır.</p></div></div>
+      <div class="rule-row"><span class="num">03</span><div><h4>Griefing yapılmaz</h4><p>Başkasının arazisine izinsiz müdahale ve hırsızlık yasaktır.</p></div></div>
+      <div class="rule-row"><span class="num">04</span><div><h4>Reklam yasak</h4><p>Başka sunucuların IP'sini paylaşmak yasaktır.</p></div></div>
+      <div class="rule-row"><span class="num">05</span><div><h4>Yönetime saygı</h4><p>İtirazlar oyun içinde değil, Discord destek kanalından yapılır.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="hesap">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--blue-bright);">Hesap</div>
+      <h2>Giriş / Kayıt</h2>
+      <p>Site hesabın oyun içi hesabınla otomatik bağlı değildir; bu yalnızca profil ve rütbe takibi içindir.</p>
+    </div>
+    <div id="session-bar" class="session-bar reveal" style="display:none;">
+      <div class="who">Giriş yapıldı: <span id="session-user"></span> · Rütbe: <span id="session-rank"></span></div>
+      <button class="btn btn-ghost" onclick="logout()">Çıkış Yap</button>
+    </div>
+    <div class="auth-shell reveal" id="auth-shell">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Giriş Yap</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Kayıt Ol <span class="mono" style="font-size:9px;color:var(--muted-2);">(Kapalı)</span></button>
+      </div>
+      <div class="auth-panel active" id="panel-login">
+        <div class="field"><label>Kullanıcı Adı</label><input id="login-user" type="text" autocomplete="off"></div>
+        <div class="field"><label>Şifre</label><input id="login-pass" type="password" autocomplete="current-password"></div>
+        <button class="btn btn-primary btn-block" onclick="login()">Giriş Yap</button>
+        <div class="msg" id="login-msg"></div>
+      </div>
+      <div class="auth-panel" id="panel-register">
+        <div style="text-align:center;padding:10px 0 4px;">
+          <div class="mono" style="font-size:12.5px;color:var(--muted);line-height:1.7;">
+            Kayıt sistemi şu anda geçici olarak kapalı.<br>Yeni hesaplar için Discord üzerinden iletişime geç.
+          </div>
+          <button class="btn btn-ghost" style="margin-top:16px;" onclick="openDiscord()">Discord'a Git</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admin-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold-bright);">Kurucuya Özel</div>
+      <h2>Yönetim Paneli</h2>
+      <p>Bu panel sadece Kurucu rütbesine sahip hesaplarda görünür.</p>
+    </div>
+    <div class="admin-grid reveal">
+      <div class="stat"><div class="n" id="stat-users">0</div><div class="l">Kayıtlı Hesap</div></div>
+      <div class="stat"><div class="n">40-140₺</div><div class="l">VIP Fiyat Aralığı</div></div>
+      <div class="stat"><div class="n">250₺</div><div class="l">Sponsor Paketi</div></div>
+      <div class="stat"><div class="n mono" style="font-size:14px;">legacynw.craftmc.com.tr</div><div class="l">Sunucu IP</div></div>
+    </div>
+    <h3 style="font-family:'Space Grotesk';text-transform:none;letter-spacing:0;font-size:17px;margin-bottom:14px;text-align:center;">Kayıtlı Hesaplar</h3>
+    <div class="userlist reveal">
+      <div class="urow head"><div>Kullanıcı Adı</div><div>Rütbe</div></div>
+      <div id="userlist-body"></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" id="admin-locked-msg" style="display:none;">
+  <div class="admin-panel-locked">Bu alanı görüntülemek için Kurucu rütbesiyle giriş yapmalısın.</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">LEGACYNW</div>
+        <p class="footer-brand-desc">Dengeli ekonomi ve adil yönetim üzerine kurulu bir Minecraft sunucusu. legacynw.craftmc.com.tr adresinden bize katıl.</p>
+      </div>
+      <div>
+        <h4>Hızlı Menü</h4>
+        <a href="#ozellikler">Özellikler</a>
+        <a href="#magaza">Mağaza</a>
+        <a href="#kurallar">Kurallar</a>
+        <a href="#hesap">Hesabım</a>
+      </div>
+      <div>
+        <h4>Topluluk</h4>
+        <a href="https://discord.gg/TRSFz8sWm" target="_blank" rel="noopener">Discord</a>
+        <a href="#destekciler">Destekçiler</a>
+      </div>
+      <div>
+        <h4>Bağlantılar</h4>
+        <a href="#">Hizmet Şartları</a>
+        <a href="#">Gizlilik Politikası</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>LegacyNW © 2026 · Tüm hakları saklıdır.</span>
+      <span>Mojang / Microsoft ile bağlantılı değildir</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.getElementById('burger').addEventListener('click', ()=>{document.getElementById('site-header').classList.toggle('open');});
+document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click', ()=>document.getElementById('site-header').classList.remove('open'));});
+
+function copyIP(){
+  const ip = document.getElementById('ip-value').textContent;
+  navigator.clipboard.writeText(ip).then(()=>{
+    const btn = document.getElementById('copy-btn');
+    const old = btn.textContent;
+    btn.textContent = 'Kopyalandı';
+    setTimeout(()=>btn.textContent = old, 1500);
+  });
+}
+function openDiscord(){window.open('https://discord.gg/TRSFz8sWm','_blank');}
+
+function switchTab(tab){
+  document.getElementById('tab-login').classList.toggle('active', tab==='login');
+  document.getElementById('tab-register').classList.toggle('active', tab==='register');
+  document.getElementById('panel-login').classList.toggle('active', tab==='login');
+  document.getElementById('panel-register').classList.toggle('active', tab==='register');
+}
+
+let currentUser = null;
+
+async function ensureFounderAccount(){
+  try{ await window.storage.get('users:triggerbaba', true); }
+  catch(e){ await window.storage.set('users:triggerbaba', JSON.stringify({password:'resul3163', rank:'Kurucu'}), true); }
+}
+
+async function register(){ return; } // Kayıt sistemi geçici olarak kapalı.
+
+async function login(){
+  const user = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const msg = document.getElementById('login-msg');
+  msg.className = 'msg';
+  try{
+    const res = await window.storage.get('users:'+user, true);
+    const data = JSON.parse(res.value);
+    if(data.password !== pass){ msg.textContent = 'Kullanıcı adı veya şifre hatalı.'; msg.classList.add('err'); return; }
+    currentUser = {username:user, rank:data.rank};
+    msg.textContent = '';
+    renderSession();
+  }catch(e){
+    msg.textContent = 'Kullanıcı adı veya şifre hatalı.'; msg.classList.add('err');
+  }
+}
+
+function logout(){ currentUser = null; renderSession(); }
+
+function renderSession(){
+  const bar = document.getElementById('session-bar');
+  const shell = document.getElementById('auth-shell');
+  const adminLink = document.getElementById('admin-nav-link');
+  const adminSection = document.getElementById('admin-section');
+  const lockedMsg = document.getElementById('admin-locked-msg');
+
+  if(currentUser){
+    bar.style.display = 'flex';
+    shell.style.display = 'none';
+    document.getElementById('session-user').textContent = currentUser.username;
+    document.getElementById('session-rank').textContent = currentUser.rank;
+  }else{
+    bar.style.display = 'none';
+    shell.style.display = 'block';
+  }
+
+  if(currentUser && currentUser.rank === 'Kurucu'){
+    adminLink.style.display = 'inline';
+    adminSection.style.display = 'block';
+    lockedMsg.style.display = 'none';
+    loadAdminData();
+  }else{
+    adminLink.style.display = 'none';
+    adminSection.style.display = 'none';
+    lockedMsg.style.display = 'block';
+  }
+}
+
+async function loadAdminData(){
+  try{
+    const list = await window.storage.list('users:', true);
+    const keys = list && list.keys ? list.keys : [];
+    document.getElementById('stat-users').textContent = keys.length;
+    const container = document.getElementById('userlist-body');
+    container.innerHTML = '';
+    for(const k of keys){
+      try{
+        const item = await window.storage.get(k, true);
+        const data = JSON.parse(item.value);
+        const uname = k.replace('users:','');
+        const row = document.createElement('div');
+        row.className = 'urow';
+        row.innerHTML = '<div>'+uname+'</div><div class="rank">'+data.rank+'</div>';
+        container.appendChild(row);
+      }catch(e){}
+    }
+  }catch(e){}
+}
+
+async function updateMiniStat(){
+  try{
+    const list = await window.storage.list('users:', true);
+    const keys = list && list.keys ? list.keys : [];
+    document.getElementById('stat-users-mini').textContent = keys.length;
+  }catch(e){}
+}
+
+document.getElementById('admin-nav-link').addEventListener('click', (e)=>{
+  e.preventDefault();
+  document.getElementById('admin-section').scrollIntoView({behavior:'smooth'});
+});
+
+ensureFounderAccount();
+renderSession();
+updateMiniStat();
+</script>
+
+</body>
+</html>
